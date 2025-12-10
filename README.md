@@ -2,6 +2,10 @@
 
 Personal Astro blog for stories on code, church tech, faith, worship, and life. Based on the [Ryze theme](https://github.com/8366888C/Ryze).
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/66112946-bad4-4f1c-b5d3-810dc775767d/deploy-status)](https://app.netlify.com/projects/thatchristiancoder-blog/deploys)
+
+![Favicon](public/favicon.png)
+
 ## Stack
 - Astro v5, Tailwind CSS v4, TypeScript
 - React islands for interactive bits
