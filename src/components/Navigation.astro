@@ -4,17 +4,17 @@
 
 <nav class="flex items-center justify-center gap-4">
   <a
-    href="/archive/1"
+    href="/"
     class:list={[
       "navigation animation",
-      Astro.url.pathname.startsWith("/archive") ? "text-accent" : "",
-    ]}>archive</a
+      Astro.url.pathname === "/" ? "text-accent" : "",
+    ]}>blog</a
   >
   <a
-    href="/tags"
+    href="/about"
     class:list={[
       "navigation animation",
-      Astro.url.pathname.startsWith("/tags") ? "text-accent" : "",
-    ]}>tags</a
+      Astro.url.pathname.startsWith("/about") ? "text-accent" : "",
+    ]}>about</a
   >
 </nav>

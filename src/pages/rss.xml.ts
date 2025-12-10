@@ -13,8 +13,8 @@ export async function GET(context: APIContext) {
   const blogs: BlogType[] = await getCollection("blogs");
   return rss({
     // stylesheet: "/pretty-feed-v3.xsl",
-    title: "Ryze",
-    description: "Static minimal astro blog starter",
+    title: "That Christian Coder",
+    description: "Stories about code, church tech, faith, worship, and life.",
     site: context.site,
     trailingSlash: false,
     items: blogs.map((blog: BlogType) => ({
