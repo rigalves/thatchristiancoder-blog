@@ -1,36 +1,38 @@
 // @ts-check
-import { defineConfig } from "astro/config";
-import tailwindcss from "@tailwindcss/vite";
-import vitePluginSvgr from "vite-plugin-svgr";
-import react from "@astrojs/react";
+
+import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
+import pagefind from "astro-pagefind";
+import { defineConfig, fontProviders } from "astro/config";
+
+import tailwindcss from "@tailwindcss/vite";
+
+import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-  vite: {
-    plugins: [tailwindcss(), vitePluginSvgr({})],
-  },
+  site: "https://roicort.github.io",
+  base: "/dasein",
   devToolbar: {
     enabled: false,
   },
-  integrations: [react(), sitemap()],
+  integrations: [mdx(), sitemap(), pagefind(), icon()],
 
-  markdown: {
-    shikiConfig: {
-      defaultColor: false,
-      themes: {
-        light: "github-light-high-contrast", // one-light
-        dark: "github-dark", // plastic
+  vite: {
+    plugins: [tailwindcss()],
+  },
+  experimental: {
+    fonts: [
+      {
+        provider: fontProviders.fontsource(),
+        name: "Space Grotesk",
+        cssVariable: "--font-sans",
       },
-      wrap: true,
-    },
+      {
+        provider: fontProviders.fontsource(),
+        name: "IBM Plex Mono",
+        cssVariable: "--font-mono",
+      },
+    ],
   },
-
-  prefetch: {
-    prefetchAll: true,
-    // defaultStrategy: "load",
-  },
-
-  output: "static",
-  site: "https://thatchristiancoder.com",
 });

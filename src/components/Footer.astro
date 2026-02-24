@@ -1,30 +1,31 @@
 ---
-import Socials from "./Socials.astro";
+const today = new Date();
 ---
 
-<footer class="footer-margin sticky bottom-0 z-0">
-  <Socials />
-  <div
-    class="text-foreground/50 flex flex-col gap-2 text-sm select-none sm:flex-row sm:items-center sm:justify-between"
-  >
-    <p>(c) 2025 That Christian Coder</p>
-    <div class="flex flex-wrap items-center gap-3">
-      <a href="/archive/1" class="hover:text-accent">Archive</a>
-      <span class="opacity-60">/</span>
-      <a href="/tags" class="hover:text-accent">Tags</a>
-      <span class="opacity-60">/</span>
-      <span>
-        built with <a
+<footer class="py-8">
+  <div class="content-shell content-shell--flush">
+    <div class="grid gap-6 pt-8 pb-4 md:flex md:items-center md:justify-between">
+      <p class="text-sm text-muted m-0">{'That Christian Coder'} &copy; {today.getFullYear()}.</p>
+      <p class="text-sm text-subtle m-0">
+        Build with
+        <a
           href="https://astro.build"
-          target="blank"
-          class="hover:text-accent"
-          aria-label="astro site">Astro</a
-        > + <a
-          href="https://github.com/8366888C/Ryze"
-          target="blank"
-          class="hover:text-accent"
-          aria-label="Ryze theme">Ryze</a>
-      </span>
+          target="_blank"
+          rel="noopener noreferrer"
+          class="underline decoration-transparent hover:decoration-current"
+        >
+          Astro
+        </a>
+        +
+        <a
+          href="https://github.com/roicort/dasein"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="underline decoration-transparent hover:decoration-current"
+        >
+          Dasein
+        </a>
+      </p>
     </div>
   </div>
 </footer>

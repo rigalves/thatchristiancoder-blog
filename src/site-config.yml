@@ -1,0 +1,10 @@
+author:
+  name: <that_christian_coder/>
+  role: Software engineer, apologetics student
+  bio:  Blogging about my journey of faith + code + life
+  location: Cartago, Costa Rica
+
+social:
+  - id: "github"
+    label: "GitHub"
+    href: "https://github.com/rigalves"

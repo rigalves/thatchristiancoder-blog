@@ -1,27 +1,30 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Introduction from "../components/Introduction.astro";
-import Featured from "../components/Featured.astro";
-import Newsletter from "../components/Newsletter.astro";
+import PageLayout from '../layouts/PageLayout.astro';
+import Hero from '../components/Hero.astro';
+import PostList from '../components/PostList.astro';
+import { getSite } from '../utils/consts';
+import { withBase } from '../utils/slugify';
+
+const site = await getSite();
 ---
 
-<BaseLayout
-  title="That Christian Coder"
-  description="Stories about code, church tech, faith, worship, and life."
-  author="That Christian Coder"
-  url="https://thatchristiancoder.com"
+<PageLayout
+	title={site.author.name}
 >
-  <div class="center">
-    <section>
-      <Introduction />
-    </section>
-    <hr />
-    <section>
-      <Featured />
-    </section>
-    <hr />
-    <section>
-      <Newsletter />
-    </section>
-  </div>
-</BaseLayout>
+	<Hero
+		title={site.author.name}
+		description={site.author.bio}
+		role='Welcome!'
+		location={site.author.location}
+		actions={[
+			{ label: 'View Blog', href: '/blog' },
+			{ label: 'What is wtrfll?', href: '/wtrfll' },
+		]}
+	/>
+	
+	<PostList
+		heading="Blog"
+		limit={3}
+		viewAllHref="/blog"
+	/>
+</PageLayout>

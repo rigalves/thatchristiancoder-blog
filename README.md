@@ -1,38 +1,81 @@
-# That Christian Coder
+# Dasein
 
-Personal Astro blog for stories on code, church tech, faith, worship, and life. Based on the [Ryze theme](https://github.com/8366888C/Ryze).
+An Astro starter for personal blogs and portfolios with TypeScript, Tailwind CSS, Pagefind search, and theming.
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/66112946-bad4-4f1c-b5d3-810dc775767d/deploy-status)](https://app.netlify.com/projects/thatchristiancoder-blog/deploys)
+![](./public/SS-1.png)
 
-![Favicon](public/favicon.png)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/roicort/dasein)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Froicort%2Fdasein)
 
-## Stack
-- Astro v5, Tailwind CSS v4, TypeScript
-- React islands for interactive bits
-- Shiki for syntax highlighting
+## Features
+
+- Blog with Markdown/MDX, featured post, and tag listings
+- Typed collections for posts, authors, and socials in [src/content.config.ts](src/content.config.ts)
+- Site-wide search via Pagefind with an accessible modal
+- SEO-ready: OpenGraph/Twitter, canonical links, and preloaded fonts in [src/components/BaseHead.astro](src/components/BaseHead.astro)
+- Themes `light/dark` with persistent toggle; debug toggle for layout borders
+- RSS (`/rss.xml`) and sitemap (`/sitemap-index.xml`) generated automatically
+
+
+<div style="display: flex; align-items: center; gap: 10px; width: 100%; margin-top: 20px;">
+    <img src="./public/SS-2.png" style="width: 180px; vertical-align: middle;" />
+    <img src="./public/SS-3.png" style="width: 180px; vertical-align: middle;" />
+    <img src="./public/SS-4.png" style="width: 180px; vertical-align: middle;" />
+</div>
+
+
+## Requirements
+- Bun
+- Astro@latest
+- Tailwdind CSS
+
+## Install & run
+
+```sh
+# install dependencies
+bun install
+
+# start dev server
+bun run dev
+
+# production build
+bun run build
+
+# preview the build
+bun run preview
+```
 
 ## Content
-- Posts live in `src/blog/` as Markdown with frontmatter (`slug`, `title`, `description`, `date`, `author`, `tags`, `featured`, `editable`).
-- Archive and tags pages are generated automatically.
 
-## Development
-```
-npm install
-npm run dev -- --host --port 4321
-```
-Site: http://localhost:4321
+- Posts: add `.md` or `.mdx` under `src/content/blog`. Schema validates `title`, `description`, `pubDate`, `updatedDate?`, `heroImage?`, `tags[]`.
+- Authors: `src/content/authors.yml`.
+- Socials: `src/content/socials.yml`.
 
-## Build
+Frontmatter example:
+```md
+---
+title: "How we launch in 6 weeks"
+description: "End-to-end process for small teams."
+pubDate: 2024-12-12
+updatedDate: 2025-01-03
+tags: [delivery, process]
+heroImage: ../../assets/blog/ship.jpg
+---
 ```
-npm run build
-```
-Static output goes to `dist/`.
 
-## Newsletter (Netlify Forms)
-The subscribe form is wired to Netlify Forms. On Netlify, submissions will appear under Forms and redirect to `/thanks`.
+## Quick customization
+
+- Site name and description in [src/consts.ts](src/consts.ts).
+- Navigation and hero actions in [src/pages/index.astro](src/pages/index.astro).
+- Colors, type, and utilities in `src/styles/global.css`.
+- Key components: header with search and toggles ([src/components/Header.astro](src/components/Header.astro)), base layout ([src/layouts/BaseLayout.astro](src/layouts/BaseLayout.astro)).
+
+## Available scripts
+
+- `npm run dev`: server on `localhost:4321` (Astro default).
+- `npm run build`: outputs `dist/` ready to deploy.
+- `npm run preview`: serves the built site locally.
 
 ## Deploy
-- Target: Netlify (static build). Netlify will run `npm run build`.
 
-## License
-MIT
+Output is static HTML. Upload `dist/` to your platform of choice (Netlify, Vercel, Cloudflare Pages, S3+CDN). Set `BASE_URL` if you publish under a subpath.
